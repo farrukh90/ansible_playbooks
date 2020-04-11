@@ -1,0 +1,50 @@
+---
+- name: Stop services
+  hosts: all  #DB 
+  become: true
+  become_method: sudo 
+  user: centos
+  ignore_errors: true   #don't stop if error
+  tasks:
+- name: Stop rlsoft on CentOS 7
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+  systemd: 
+    name: sbm-agent
+    state: stopped
+  ignore_errors: true
+
+
+  - name: Stop rlsoft on CentOS 6
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+  service: 
+    name: sdp-agent
+    state: stopped
+  ignore_errors: true
+
+
+
+ - name: Stop Filebeat
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+    systemd: 
+    name: sbm-agent
+    state: stopped  
+  ignore_errors: true
+
+
+
+ - name: Stop NRPE
+   when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+    systemd: 
+    name: sbm-agent
+    state: stopped
+  ignore_errors: true
+
+
+
+  - name: Stop Mariadb
+    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+    systemd: 
+    name: sbm-agent
+    state: stopped
+   ignore_errors: true
+ 
