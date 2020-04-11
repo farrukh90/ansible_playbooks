@@ -8,7 +8,7 @@
   tasks:
 
 
-- name: Stop r1soft on CentOS 7
+- name: Start r1soft on CentOS 7
   when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
   systemd: 
       name: sbm-agent
@@ -16,7 +16,7 @@
   ignore_errors: true
 
 
-- name: Stop r1soft on CentOS 6
+- name: Start r1soft on CentOS 6
   when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
   service: 
       name: cdp-agent
@@ -24,7 +24,7 @@
   ignore_errors: true
 
 
-- name: Stop Filebeat
+- name: Start Filebeat
   when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
   systemd: 
       name: filebeat
@@ -32,7 +32,7 @@
   ignore_errors: true
 
 
-- name: Stop NRPE
+- name: Start NRPE
   when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
   systemd: 
       name: nrpe
@@ -40,7 +40,7 @@
   ignore_errors: true
 
 
-- name: Stop Mariadb
+- name: Start Mariadb
   when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
   systemd: 
       name: mariadb
